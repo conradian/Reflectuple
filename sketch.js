@@ -123,8 +123,16 @@ function clamp(n, a, b)
 function swap(array, coorA, coorB)
 {
   var array = [];
+
   if(coorA[0] == coorB[0])
   {
+    if( (coorB[1] < coorA[1]) )
+    {
+      var temp = coorB[1];
+      coorB[1] = coorA[1];
+      coorA[1] = temp;
+    }
+
     for(i = 0; i < abs(coorA[1] - coorB[1]) + 1; i++)
     {
       array.push(grid[coorA[1]+i][coorA[0]]);
@@ -140,6 +148,13 @@ function swap(array, coorA, coorB)
   }
   else if(coorA[1] == coorB[1])
   {
+    if( (coorB[0] < coorA[0]) )
+    {
+      var temp = coorB[0];
+      coorB[0] = coorA[0];
+      coorA[0] = temp;
+    }
+
     for(i = 0; i < abs(coorA[0] - coorB[0]) + 1; i++)
     {
       array.push(grid[coorA[1]][coorA[0]+i]);
