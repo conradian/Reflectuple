@@ -117,6 +117,17 @@ function draw()
   	}
   }
 
+  //Drawing selection box
+  if(tempSelect != -1)
+  {
+    fill(204, 101, 192, 0);
+    strokeWeight(4);
+    stroke(255);
+    rect(xgridstart + cellx*tempSelect[0], ygridstart + celly*tempSelect[1], cellx, celly);
+    strokeWeight(1);
+    stroke(0);
+  }
+
   //----------------------------Drawing Answer Key------------------------------
   //Draw horizontal lines
   for(i = 0; i < cellNumby + 1; i++)
