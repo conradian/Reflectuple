@@ -65,6 +65,12 @@ function setup()
   scrambleBtHard.position(w*0.315, h*0.8+scrambleBtHard.height*0.5-2);
   scrambleBtHard.mousePressed(scrambleHard);
 
+  //Button that resets grid
+  scrambleBtHard = createButton("Reset");
+  scrambleBtHard.class("reset");
+  scrambleBtHard.position(w*0.225, h*0.87+scrambleBtHard.height*0.5-2);
+  scrambleBtHard.mousePressed(reset);
+
 }
 
 //Runs multiple times a second - program loop
@@ -74,8 +80,18 @@ function draw()
   //Setup
   createCanvas(windowWidth, windowHeight);
   background("#3C4666");
-  textFont("Verdana");
-  fill("#FFFFFF");
+  textFont("Helvetica");
+  fill("#c0cbdc");
+
+  //-----------------------------Drawing text-----------------------------------
+
+  //Drawing heading
+   textSize(52);
+   text("Reflectuple",w*0.1,h*0.15);
+
+   //Drawing answer key
+   textSize(17);
+   text("Answer", xgridend + cellx*1.98, ygridstart - 3);
 
   //-----------------------------Drawing Grid-----------------------------------
   //Draw horizontal lines
@@ -120,7 +136,6 @@ function draw()
     fill(colors[i]);
     rect(xgridend + cellx*2,ygridstart+i*celly,cellx,celly);
   }
-
 
 }
 
@@ -223,7 +238,6 @@ function mirror(array, coorA, coorB)
 //Scrambles the reflectuple
 function scrambleEasy()
 {
-
   var array = grid;
 
   for(i = 0; i < 20; i++)
@@ -235,10 +249,9 @@ function scrambleEasy()
 
 function scrambleNormal()
 {
-
   var array = grid;
 
-  for(i = 0; i < 40; i++)
+  for(i = 0; i < 30; i++)
   {
     mirror(array, [randomRange(0,cellNumbx-1),randomRange(0,cellNumby-1)], [randomRange(0,cellNumbx-1),randomRange(0,cellNumby-1)]);
   }
@@ -247,7 +260,6 @@ function scrambleNormal()
 
 function scrambleHard()
 {
-
   var array = grid;
 
   for(i = 0; i < 60; i++)
@@ -255,6 +267,11 @@ function scrambleHard()
     mirror(array, [randomRange(0,cellNumbx-1),randomRange(0,cellNumby-1)], [randomRange(0,cellNumbx-1),randomRange(0,cellNumby-1)]);
   }
 
+}
+
+function reset()
+{
+  location.reload();
 }
 
 //Random range function
